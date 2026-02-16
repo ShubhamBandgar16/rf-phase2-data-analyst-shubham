@@ -1,0 +1,33 @@
+# Step 1: Import pandas
+import pandas as pd
+
+# -----------------------------
+# Step 2: Create a dataset with errors
+# -----------------------------
+data = {
+    "Name": ["Amit", "Riya", "Amit", "Suresh", "Neha", "Riya"],
+    "Age": [25, 22, 25, -1, None, 22],
+    "City": ["Mumbai", "Pune", "Mumbai", "Delhi", "Bangalore", "Pune"]
+}
+
+# Create DataFrame
+df = pd.DataFrame(data)
+
+print("Original Dataset:\n")
+print(df)
+
+# -----------------------------
+# Step 3: Clean the dataset
+# -----------------------------
+
+# 1. Remove duplicate rows
+df = df.drop_duplicates()
+
+# 2. Remove rows with missing values
+df = df.dropna()
+
+# 3. Remove invalid age values (age <= 0)
+df = df[df["Age"] > 0]
+
+print("\nCleaned Dataset:\n")
+print(df)
