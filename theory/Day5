@@ -1,0 +1,125 @@
+> “Statistics is the grammar of science.” – Karl Pearson
+
+# 📊 Descriptive Statistics & Hypothesis Testing
+
+## 🔹 Overview
+Descriptive Statistics and Hypothesis Testing are fundamental concepts in data analysis and statistics. Descriptive statistics summarize and describe the main features of a dataset, while hypothesis testing helps make data-driven decisions by testing assumptions about a population.
+
+Both are essential for Data Analysts to interpret data correctly and support business decisions.
+
+---
+
+# 📈 Descriptive Statistics
+
+## 🔹 Definition
+Descriptive statistics are numerical and graphical methods used to summarize and organize data so it can be understood easily.
+
+## 🔹 Why It Is Used
+- To understand the distribution of data  
+- To summarize large datasets  
+- To identify patterns and trends  
+- To detect outliers  
+- To support further statistical analysis  
+
+## 🔹 Measures of Central Tendency
+These describe the center of the data:
+
+- **Mean** → Average value  
+- **Median** → Middle value  
+- **Mode** → Most frequent value  
+
+## 🔹 Measures of Dispersion
+These describe the spread of data:
+
+- **Range** → Difference between max and min  
+- **Variance** → Spread of data from mean  
+- **Standard Deviation** → Square root of variance  
+- **Interquartile Range (IQR)** → Spread of middle 50%  
+
+## 🔹 Data Distribution
+- Normal Distribution  
+- Skewed Distribution (Positive / Negative)  
+
+## 🔹 Common Visualization Methods
+- Histogram  
+- Box Plot  
+- Bar Chart  
+- Pie Chart  
+
+Descriptive statistics help in understanding “what the data looks like.”
+
+---
+
+# 🧪 Hypothesis Testing
+
+## 🔹 Definition
+Hypothesis testing is a statistical method used to determine whether there is enough evidence in a sample to support or reject a claim about a population.
+
+It helps answer questions like:
+- Is a new product performing better?
+- Has sales significantly increased?
+- Is there a difference between two groups?
+
+---
+
+## 🔹 Key Concepts
+
+### 1. Null Hypothesis (H₀)
+Assumes there is no effect or no difference.
+
+### 2. Alternative Hypothesis (H₁)
+Assumes there is an effect or a difference.
+
+### 3. Significance Level (α)
+Commonly set at 0.05 (5%).  
+It represents the probability of rejecting a true null hypothesis.
+
+### 4. P-value
+- If p-value < 0.05 → Reject H₀  
+- If p-value ≥ 0.05 → Fail to reject H₀  
+
+---
+
+## 🔹 Types of Hypothesis Tests
+
+- Z-Test  
+- T-Test (One-sample, Independent, Paired)  
+- Chi-Square Test  
+- ANOVA (Analysis of Variance)  
+
+---
+
+## 🔹 Steps in Hypothesis Testing
+
+1. Define Null and Alternative Hypotheses  
+2. Choose Significance Level (α)  
+3. Select Appropriate Statistical Test  
+4. Calculate Test Statistic  
+5. Find P-value  
+6. Make Decision (Reject or Fail to Reject H₀)  
+
+---
+
+## 🔹 Why Hypothesis Testing Is Important
+
+- Supports data-driven decisions  
+- Validates business assumptions  
+- Reduces decision-making risk  
+- Measures statistical significance  
+- Used in A/B testing, product analysis, and performance evaluation  
+
+---
+
+# 📌 Difference Between Descriptive Statistics & Hypothesis Testing
+
+| Aspect                  | Descriptive Statistics            | Hypothesis Testing                  |
+|-------------------------|----------------------------------|-------------------------------------|
+| Purpose                 | Summarize data                   | Make decisions about population     |
+| Focus                   | What the data shows              | Whether results are significant     |
+| Output                  | Mean, Median, Std Dev, Charts    | P-value, Test Statistic             |
+| Decision Making         | Informative                      | Confirmatory                        |
+
+---
+
+## 🚀 Conclusion
+Descriptive statistics help understand and summarize data, while hypothesis testing helps make statistically valid conclusions. Together, they form the backbone of analytical thinking and data-driven decision-making.
