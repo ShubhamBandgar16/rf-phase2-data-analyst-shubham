@@ -1,0 +1,127 @@
+> “Test. Learn. Improve. Repeat.”
+
+# 🧪 A/B Testing – Concepts
+
+## 🔹 Overview
+A/B Testing (also called Split Testing) is a statistical method used to compare two versions of a product, webpage, advertisement, or feature to determine which one performs better.
+
+It is widely used in marketing, product development, and data analytics to make data-driven decisions.
+
+---
+
+## 🔹 What is A/B Testing?
+
+A/B testing involves:
+- Version A → Original version (Control Group)  
+- Version B → Modified version (Variant Group)  
+- Randomly splitting users into two groups  
+- Measuring performance using a defined metric  
+
+The goal is to determine whether Version B performs significantly better than Version A.
+
+---
+
+## 🔹 Why A/B Testing is Used
+
+- Improve conversion rates  
+- Optimize website design  
+- Increase sales or engagement  
+- Test new product features  
+- Reduce business risk before full rollout  
+
+---
+
+## 🔹 Key Components of A/B Testing
+
+### 1. Control Group (A)
+The original version used as a baseline.
+
+### 2. Treatment Group (B)
+The modified version being tested.
+
+### 3. Randomization
+Users are randomly assigned to avoid bias.
+
+### 4. Metric (KPI)
+Performance measure such as:
+- Click-Through Rate (CTR)  
+- Conversion Rate  
+- Revenue  
+- Bounce Rate  
+
+### 5. Sample Size
+Sufficient number of users required for reliable results.
+
+---
+
+## 🔹 Steps in A/B Testing
+
+1. Identify the problem or goal  
+2. Form a hypothesis  
+3. Define success metrics  
+4. Split users randomly  
+5. Run the experiment for a fixed time  
+6. Collect and analyze results  
+7. Perform statistical significance test  
+8. Implement winning version  
+
+---
+
+## 🔹 Example
+
+Problem: Low signup rate on website  
+
+Hypothesis: Changing button color from blue to green will increase signups.  
+
+Version A → Blue button  
+Version B → Green button  
+
+After testing:
+- If Version B has higher conversion rate with statistical significance → Implement B  
+- If not significant → Keep Version A  
+
+---
+
+## 🔹 Statistical Concepts Used in A/B Testing
+
+- Null Hypothesis (No difference between A and B)  
+- Alternative Hypothesis (There is a difference)  
+- P-value  
+- Significance Level (usually 0.05)  
+- Confidence Interval  
+
+A/B testing relies on hypothesis testing to ensure results are not due to random chance.
+
+---
+
+## 🔹 Types of A/B Testing
+
+- Simple A/B Test (Two versions)  
+- A/B/n Testing (Multiple variants)  
+- Multivariate Testing  
+- Split URL Testing  
+
+---
+
+## 🔹 Common Mistakes to Avoid
+
+- Running test for too short duration  
+- Small sample size  
+- Testing multiple changes at once  
+- Ignoring statistical significance  
+- Stopping test early  
+
+---
+
+## 🔹 Why A/B Testing is Important for Data Analysts
+
+- Supports evidence-based decisions  
+- Improves business performance  
+- Reduces risk of failed changes  
+- Measures real user behavior  
+- Widely used in e-commerce, SaaS, and digital marketing  
+
+---
+
+## 🚀 Conclusion
+A/B Testing is a powerful experimentation technique that helps businesses make confident decisions backed by data. It combines statistics, analytics, and business understanding to optimize performance and drive growth.
