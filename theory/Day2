@@ -1,0 +1,151 @@
+> “Without data, you're just another person with an opinion.” – W. Edwards Deming
+
+# 🗄️ SQL Basic Queries for Data Analysts
+
+## 🔹 Overview
+SQL (Structured Query Language) is one of the most important skills for a Data Analyst. It is used to retrieve, filter, group, and analyze data stored in relational databases. These basic queries form the foundation of data analysis and reporting.
+
+---
+
+## 🔹 1. SELECT
+Used to retrieve specific columns from a table.
+
+Syntax:
+SELECT column_name  
+FROM table_name;
+
+Example:
+SELECT name, salary  
+FROM employees;
+
+---
+
+## 🔹 2. WHERE
+Used to filter records based on conditions.
+
+Example:
+SELECT *  
+FROM employees  
+WHERE salary > 50000;
+
+---
+
+## 🔹 3. ORDER BY
+Used to sort data in ascending (ASC) or descending (DESC) order.
+
+Example:
+SELECT name, salary  
+FROM employees  
+ORDER BY salary DESC;
+
+---
+
+## 🔹 4. GROUP BY
+Used to group rows with the same values, usually with aggregate functions.
+
+Example:
+SELECT department, COUNT(*)  
+FROM employees  
+GROUP BY department;
+
+---
+
+## 🔹 5. HAVING
+Used to filter grouped results (used with GROUP BY).
+
+Example:
+SELECT department, COUNT(*)  
+FROM employees  
+GROUP BY department  
+HAVING COUNT(*) > 5;
+
+---
+
+## 🔹 6. Aggregate Functions
+Used to perform calculations on data.
+
+Common functions:
+- COUNT()
+- SUM()
+- AVG()
+- MIN()
+- MAX()
+
+Example:
+SELECT AVG(salary)  
+FROM employees;
+
+---
+
+## 🔹 7. JOIN
+Used to combine data from multiple tables.
+
+Example (INNER JOIN):
+SELECT e.name, d.department_name  
+FROM employees e  
+INNER JOIN departments d  
+ON e.department_id = d.department_id;
+
+---
+
+## 🔹 8. Subqueries
+A query written inside another query.
+
+Example (Subquery in WHERE):
+SELECT name  
+FROM employees  
+WHERE salary > (  
+    SELECT AVG(salary)  
+    FROM employees  
+);
+
+Example (Subquery in FROM):
+SELECT department, AVG(salary)  
+FROM (  
+    SELECT department, salary  
+    FROM employees  
+) AS temp  
+GROUP BY department;
+
+---
+
+## 🔹 9. DISTINCT
+Used to remove duplicate values.
+
+Example:
+SELECT DISTINCT department  
+FROM employees;
+
+---
+
+## 🔹 10. LIMIT / TOP
+Used to limit the number of records returned.
+
+Example (MySQL / PostgreSQL):
+SELECT *  
+FROM employees  
+LIMIT 5;
+
+Example (SQL Server):
+SELECT TOP 5 *  
+FROM employees;
+
+---
+
+## 📊 Why SQL is Important for Data Analysts
+- Extracts data from large databases  
+- Performs aggregations and calculations  
+- Builds reports and dashboards  
+- Supports business decision-making  
+- Integrates with BI tools like Power BI and Tableau  
+
+---
+
+## 🚀 Skills to Master
+- Writing efficient queries  
+- Understanding joins clearly  
+- Using subqueries properly  
+- Handling NULL values  
+- Optimizing query performance  
+
+Mastering these SQL basics builds a strong foundation for advanced analytics and data-driven decision-making.
