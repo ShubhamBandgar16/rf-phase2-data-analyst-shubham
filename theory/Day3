@@ -1,0 +1,111 @@
+> “Data cleaning is not glamorous, but it is where real analysis begins.”
+
+# 🐼 Pandas for Data Cleaning & Handling Missing Values
+
+## 🔹 Overview
+Pandas is a powerful Python library used by Data Analysts for data manipulation and cleaning. It provides data structures like DataFrame and Series to efficiently handle structured data. Real-world datasets often contain missing values, duplicates, incorrect formats, and inconsistencies, making data cleaning a critical step before analysis.
+
+---
+
+## 🔹 Importing Pandas
+import pandas as pd  
+
+---
+
+## 🔹 Loading Data
+df = pd.read_csv("data.csv")  
+df = pd.read_excel("data.xlsx")  
+
+---
+
+## 🔹 Basic Data Inspection
+df.head()        → View first 5 rows  
+df.tail()        → View last 5 rows  
+df.info()        → Check data types and non-null values  
+df.describe()    → Statistical summary  
+df.shape         → Number of rows and columns  
+df.columns       → Column names  
+
+---
+
+## 🔹 Handling Missing Values
+
+Check missing values:  
+df.isnull().sum()  
+
+Drop missing values:  
+df.dropna()            → Drop rows with missing values  
+df.dropna(axis=1)      → Drop columns with missing values  
+
+Fill missing values:  
+df.fillna(0)                   → Replace with 0  
+df.fillna(df.mean())           → Replace with column mean  
+df.fillna(method='ffill')      → Forward fill  
+df.fillna(method='bfill')      → Backward fill  
+
+---
+
+## 🔹 Removing Duplicates
+df.duplicated().sum()   → Check duplicates  
+df.drop_duplicates()    → Remove duplicates  
+
+---
+
+## 🔹 Renaming Columns
+df.rename(columns={"old_name": "new_name"}, inplace=True)  
+
+---
+
+## 🔹 Changing Data Types
+df["column"] = df["column"].astype(int)  
+df["date"] = pd.to_datetime(df["date"])  
+
+---
+
+## 🔹 Filtering Data
+df[df["salary"] > 50000]  
+df[(df["age"] > 25) & (df["city"] == "Mumbai")]  
+
+---
+
+## 🔹 Handling Outliers (Basic Example)
+df[df["salary"] < df["salary"].quantile(0.95)]  
+
+---
+
+## 🔹 Exporting Cleaned Data
+df.to_csv("cleaned_data.csv", index=False)  
+
+---
+
+## 📌 Common Data Cleaning Tasks
+- Handling missing values  
+- Removing duplicates  
+- Fixing incorrect data types  
+- Standardizing text values  
+- Detecting outliers  
+- Formatting dates  
+- Filtering relevant records  
+
+---
+
+## 📚 Pandas Documentation
+Official Documentation:  
+https://pandas.pydata.org/docs/  
+
+Key sections to explore:
+- DataFrame Basics  
+- Missing Data Handling  
+- GroupBy Operations  
+- Merging & Joining  
+- Data Cleaning Techniques  
+
+---
+
+## 🚀 Why Pandas is Important
+- Fast and efficient data manipulation  
+- Handles large datasets easily  
+- Integrates with NumPy, Matplotlib, and Scikit-learn  
+- Industry-standard tool for data preprocessing  
+
+Mastering Pandas is essential for effective data cleaning, preprocessing, and real-world data analysis projects.
