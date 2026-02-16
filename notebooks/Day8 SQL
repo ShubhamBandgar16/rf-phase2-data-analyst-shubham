@@ -1,0 +1,39 @@
+-- MySQL service name: MySQL_80
+
+-- Create database
+CREATE DATABASE diabetes_db;
+
+-- Use database
+USE diabetes_db;
+
+-- Create table
+CREATE TABLE diabetes_data (
+    pregnancies INT,
+    glucose INT,
+    bloodpressure INT,
+    skinthickness INT,
+    insulin INT,
+    bmi FLOAT,
+    diabetespedigreefunction FLOAT,
+    age INT,
+    outcome INT
+);
+
+-- Check secure file path (MySQL_80 service)
+SHOW VARIABLES LIKE 'secure_file_priv';
+
+-- Load cleaned CSV file
+LOAD DATA LOCAL INFILE
+'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/cleaned_diabetes.csv'
+INTO TABLE diabetes_data
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS;
+
+-- Verify data
+SELECT * FROM diabetes_data
+LIMIT 10;
+
+-- Check total records
+SELECT COUNT(*) FROM diabetes_data;
