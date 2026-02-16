@@ -1,0 +1,39 @@
+import pandas as pd
+
+# Load the dataset
+df = pd.read_csv("diabetes.csv")
+
+# View first 5 rows
+print(df.head())
+
+# Check dataset info
+print(df.info())
+
+# Check missing values
+print(df.isnull().sum())
+
+# Columns where 0 is not a valid value
+zero_cols = ["Glucose", "BloodPressure", "SkinThickness", "Insulin", "BMI"]
+
+# Replace 0 with NaN in selected columns
+df[zero_cols] = df[zero_cols].replace(0, pd.NA)
+
+# Check missing values again
+print(df.isnull().sum())
+
+# Fill missing values with column median
+df.fillna(df.median(), inplace=True)
+
+# Remove duplicate rows (if any)
+df.drop_duplicates(inplace=True)
+
+# Rename columns to lowercase
+df.columns = df.columns.str.lower()
+
+# Final cleaned data check
+print(df.info())
+
+# Save cleaned dataset
+df.to_csv("cleaned_diabetes.csv", index=False)
+
+print("Dataset cleaned and saved successfully!")
