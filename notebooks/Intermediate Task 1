@@ -1,0 +1,89 @@
+import pandas as pd
+
+# ==============================
+# 1️⃣ Load Dataset (Fix Encoding Issue)
+# ==============================
+
+df = pd.read_csv("Global_Sales.csv", encoding="latin1")
+
+print("Dataset Loaded Successfully!\n")
+
+# ==============================
+# 2️⃣ Basic Info
+# ==============================
+
+print("Initial Shape:", df.shape)
+print("\nMissing Values:\n", df.isnull().sum())
+
+# ==============================
+# 3️⃣ Handle Missing Values
+# ==============================
+
+# Fill numeric columns with mean
+numeric_cols = df.select_dtypes(include=['int64', 'float64']).columns
+for col in numeric_cols:
+    df[col].fillna(df[col].mean(), inplace=True)
+
+# Fill categorical columns with mode
+categorical_cols = df.select_dtypes(include=['object']).columns
+for col in categorical_cols:
+    df[col].fillna(df[col].mode()[0], inplace=True)
+
+# ==============================
+# 4️⃣ Remove Duplicates
+# ==============================
+
+print("\nDuplicate Rows:", df.duplicated().sum())
+df.drop_duplicates(inplace=True)
+
+# ==============================
+# 5️⃣ Convert Date Columns
+# ==============================
+
+if "Order Date" in df.columns:
+    df["Order Date"] = pd.to_datetime(df["Order Date"], errors="coerce")
+
+if "Ship Date" in df.columns:
+    df["Ship Date"] = pd.to_datetime(df["Ship Date"], errors="coerce")
+
+print("\nAfter Cleaning Shape:", df.shape)
+
+# ==============================
+# 6️⃣ Save Cleaned File
+# ==============================
+
+df.to_csv("Cleaned_Global_Sales.csv", index=False)
+print("\nCleaned file saved as Cleaned_Global_Sales.csv")
+
+# ==============================
+# 7️⃣ Business Insights
+# ==============================
+
+print("\n========== BUSINESS INSIGHTS ==========\n")
+
+# Q1: Total Sales & Profit
+total_sales = df["Sales"].sum()
+total_profit = df["Profit"].sum()
+print("1️⃣ Total Sales:", round(total_sales, 2))
+print("   Total Profit:", round(total_profit, 2), "\n")
+
+# Q2: Best Region by Sales
+if "Region" in df.columns:
+    best_region = df.groupby("Region")["Sales"].sum().sort_values(ascending=False)
+    print("2️⃣ Sales by Region:\n", best_region, "\n")
+
+# Q3: Most Profitable Category
+if "Category" in df.columns:
+    best_category = df.groupby("Category")["Profit"].sum().sort_values(ascending=False)
+    print("3️⃣ Profit by Category:\n", best_category, "\n")
+
+# Q4: Top 5 Customers
+if "Customer Name" in df.columns:
+    top_customers = df.groupby("Customer Name")["Sales"].sum().sort_values(ascending=False).head(5)
+    print("4️⃣ Top 5 Customers:\n", top_customers, "\n")
+
+# Q5: Profit Margin
+profit_margin = (total_profit / total_sales) * 100
+print("5️⃣ Overall Profit Margin:", round(profit_margin, 2), "%")
+
+print("\nAnalysis Completed Successfully 🚀")
