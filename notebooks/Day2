@@ -1,1 +1,71 @@
+--creating database
+CREATE DATABASE college_db;
+--using the same database
+USE college_db;
+--creating student table in database
+CREATE TABLE students (
+    student_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    age INT,
+    course_id INT
+);
+--creating course table in database
+CREATE TABLE courses (
+    course_id INT PRIMARY KEY,
+    course_name VARCHAR(50)
+);
+--inserting data into student table
+INSERT INTO students VALUES
+(101, 'Shubham', 20, 1),
+(102, 'Amit', 21, 2),
+(103, 'Neha', 19, 1);
+--inserting data into course table
+INSERT INTO courses VALUES
+(1, 'BSc IT'),
+(2, 'BSc CS');
+--selecting all records from student table
+SELECT * FROM students;
+--selecting only name and age records from student table
+SELECT name, age FROM students;
+--select with where condition
+SELECT * FROM students WHERE age > 20;
+--inner join
+SELECT students.name, courses.course_name
+FROM students
+INNER JOIN courses
+ON students.course_id = courses.course_id;
+--updating data
+UPDATE students
+SET age = 22
+WHERE student_id = 102;
+--delete(remove specific rows)
+DELETE FROM students
+WHERE student_id = 103;
+--truncate(removes all data but structure remains)
+TRUNCATE TABLE students;
+--alter(to add a new column)
+ALTER TABLE students
+ADD email VARCHAR(50);
+--alter(to add a modify column)
+ALTER TABLE students
+MODIFY name VARCHAR(100);
+--drop(used to drop a table from database)
+DROP TABLE courses;
+--rollback(undoes a change)
+START TRANSACTION;
+
+DELETE FROM students WHERE student_id = 101;
+
+ROLLBACK;
+--groupby with where
+SELECT course_id, COUNT(*)
+FROM students
+WHERE age > 20
+GROUP BY course_id;
+--orderby(filters result)
+SELECT * FROM students
+ORDER BY age;
+
+
+
 
