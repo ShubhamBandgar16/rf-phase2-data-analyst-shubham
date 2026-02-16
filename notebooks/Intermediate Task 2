@@ -1,0 +1,120 @@
+-- =====================================
+-- 1️⃣ CREATE DATABASE
+-- =====================================
+
+CREATE DATABASE sales_analysis;
+USE sales_analysis;
+
+
+-- =====================================
+-- 2️⃣ CREATE TABLES
+-- =====================================
+
+-- Customers Table
+CREATE TABLE customers (
+    customer_id VARCHAR(20) PRIMARY KEY,
+    customer_name VARCHAR(100),
+    segment VARCHAR(50),
+    region VARCHAR(50)
+);
+
+-- Products Table
+CREATE TABLE products (
+    product_id VARCHAR(20) PRIMARY KEY,
+    category VARCHAR(50),
+    sub_category VARCHAR(50),
+    product_name VARCHAR(200)
+);
+
+-- Orders Table
+CREATE TABLE orders (
+    order_id VARCHAR(20),
+    order_date DATE,
+    customer_id VARCHAR(20),
+    product_id VARCHAR(20),
+    sales DECIMAL(10,2),
+    quantity INT,
+    discount DECIMAL(5,2),
+    profit DECIMAL(10,2),
+    PRIMARY KEY (order_id, product_id),
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+
+
+-- =====================================
+-- 3️⃣ KPI QUERIES
+-- =====================================
+
+-- Q1: Total Sales, Profit & Profit Margin
+SELECT 
+    SUM(sales) AS total_sales,
+    SUM(profit) AS total_profit,
+    ROUND((SUM(profit)/SUM(sales))*100, 2) AS profit_margin_percentage
+FROM orders;
+
+
+-- Q2: Revenue by Region (JOIN + GROUP BY)
+SELECT 
+    c.region,
+    SUM(o.sales) AS total_sales
+FROM orders o
+JOIN customers c 
+ON o.customer_id = c.customer_id
+GROUP BY c.region
+ORDER BY total_sales DESC;
+
+
+-- Q3: Most Profitable Category (JOIN + GROUP BY)
+SELECT 
+    p.category,
+    SUM(o.profit) AS total_profit
+FROM orders o
+JOIN products p
+ON o.product_id = p.product_id
+GROUP BY p.category
+ORDER BY total_profit DESC;
+
+
+-- Q4: Top 5 Customers by Sales
+SELECT 
+    c.customer_name,
+    SUM(o.sales) AS total_sales
+FROM orders o
+JOIN customers c
+ON o.customer_id = c.customer_id
+GROUP BY c.customer_name
+ORDER BY total_sales DESC
+LIMIT 5;
+
+
+-- Q5: Customers Above Average Sales (Subquery)
+SELECT 
+    c.customer_name,
+    SUM(o.sales) AS customer_sales
+FROM orders o
+JOIN customers c
+ON o.customer_id = c.customer_id
+GROUP BY c.customer_name
+HAVING customer_sales > 
+    (SELECT AVG(sales) FROM orders);
+
+
+-- Q6: Loss-Making Products (Subquery)
+SELECT 
+    p.product_name,
+    SUM(o.profit) AS total_profit
+FROM orders o
+JOIN products p
+ON o.product_id = p.product_id
+GROUP BY p.product_name
+HAVING total_profit < 0;
+
+
+-- Q7: Monthly Sales Trend
+SELECT 
+    DATE_FORMAT(order_date, '%Y-%m') AS month,
+    SUM(sales) AS monthly_sales
+FROM orders
+GROUP BY month
+ORDER BY month;
