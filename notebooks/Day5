@@ -1,0 +1,13 @@
+from scipy import stats
+
+group1 = [10, 12, 14, 16, 18]
+group2 = [11, 13, 15, 17, 19]
+
+t_stat, p_value = stats.ttest_ind(group1, group2)
+
+print("T-statistic:", t_stat)
+print("P-value:", p_value)
+#T-statistic → shows how different the two groups are
+#P-value → tells if the difference is statistically significant
+#If p-value < 0.05 → the difference is significant
+#If p-value ≥ 0.05 → no significant differencea
