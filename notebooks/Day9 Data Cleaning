@@ -1,0 +1,32 @@
+import pandas as pd
+
+# Load the dataset
+df = pd.read_csv("students.csv")
+
+# Preview first 5 rows
+print("Original Data:")
+print(df.head())
+
+# Drop duplicates
+df = df.drop_duplicates()
+
+# Fill missing values safely
+for col in df.columns:
+    if df[col].dtype == 'object':  # categorical
+        df[col] = df[col].fillna(df[col].mode()[0])
+        df[col] = df[col].str.lower().str.strip()  # clean text
+    else:  # numeric
+        # Only fill if column is numeric
+        if pd.api.types.is_numeric_dtype(df[col]):
+            df[col] = df[col].fillna(df[col].median())
+
+# Clean column names
+df.columns = df.columns.str.lower().str.replace(' ', '_')
+
+# Preview cleaned data
+print("\nCleaned Data:")
+print(df.head())
+
+# Save cleaned CSV
+df.to_csv("student_cleaned.csv", index=False)
+print("\nCleaned data saved as 'student_cleaned.csv'")
