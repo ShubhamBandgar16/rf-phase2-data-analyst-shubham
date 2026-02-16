@@ -1,0 +1,21 @@
+from scipy import stats
+
+# conversion data (1 = success, 0 = failure)
+group_A = [1, 0, 1, 1, 0, 1]
+group_B = [1, 1, 1, 0, 1, 1]
+
+t_stat, p_value = stats.ttest_ind(group_A, group_B)
+
+print("T-statistic:", t_stat)
+print("P-value:", p_value)
+
+#Group A → old version (control group)
+
+#Group B → new version (test group)
+
+#ttest_ind() → compares the average performance of A and B
+
+#P-value → tells if the difference is meaningful
+
+# p-value < 0.05 → Version B is significantly different
+# p-value ≥ 0.05 → No significant difference
