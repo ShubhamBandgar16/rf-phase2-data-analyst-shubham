@@ -5,6 +5,8 @@ Data Analyst
 
 ## Dataset / Source Links
 - Example Dataset: [Kaggle Dataset](https://www.kaggle.com/dataset-link)
+- All images are stored in the [assests folder](assests/).
+
 
 ## Tools Used
 Python, SQL, Tableau, Excel, PowerBI
