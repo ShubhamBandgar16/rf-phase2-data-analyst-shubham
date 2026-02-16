@@ -5,7 +5,7 @@ Data Analyst
 
 ## Dataset / Source Links
 - Example Dataset: [Kaggle Dataset](https://www.kaggle.com/dataset-link)
-- All images are stored in the [assests folder](assests/).
+- All images are stored in the [assets folder](assets/).
 
 
 ## Tools Used
