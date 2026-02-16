@@ -1,0 +1,26 @@
+import pandas as pd
+import sqlite3
+
+# Load cleaned CSV
+df = pd.read_csv("sales_data_cleaned.csv")
+
+# Connect to SQLite database (it will create one if it doesn't exist)
+conn = sqlite3.connect("sales_data.db")
+
+# Load data into a table called 'sales'
+df.to_sql('sales', conn, if_exists='replace', index=False)
+
+print("✅ Data loaded into SQLite database 'sales_data.db' in table 'sales'")
+
+
+#testing sql queries
+
+# Example: total sales by year
+query = """
+SELECT YEAR_ID, SUM(SALES) as TotalSales
+FROM sales
+GROUP BY YEAR_ID
+ORDER BY YEAR_ID
+"""
+result = pd.read_sql(query, conn)
+print(result)
